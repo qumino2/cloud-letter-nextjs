@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { SharedLetter } from '@/types/letter';
 import WallCard from '../components/WallCard';
 import LetterModal from '../components/LetterModal';
+import KouziFooter from '../components/KouziFooter';
 import Link from 'next/link';
 
 const INSPIRATIONAL_QUOTES = [
@@ -170,6 +171,9 @@ export default function WallPage() {
             ))}
           </div>
         )}
+
+        {/* Footer */}
+        <KouziFooter />
       </div>
 
       {/* 信件详情模态框 */}

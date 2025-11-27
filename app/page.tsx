@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import PosterGenerator from './components/PosterGenerator';
 import ShareToWall from './components/ShareToWall';
+import KouziFooter from './components/KouziFooter';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 
@@ -377,9 +378,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-sm text-gray-500">
-          <p>用心传递爱，让每一句话都充满温暖</p>
-        </div>
+        <KouziFooter />
       </div>
 
       {/* 海报生成器弹窗 */}
