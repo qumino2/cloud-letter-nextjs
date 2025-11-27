@@ -36,7 +36,9 @@ export default function WallPage() {
     setError('');
 
     try {
-      const response = await fetch(`/api/wall?sort=${sortBy}&limit=20`);
+      // 添加时间戳参数破坏缓存，确保获取最新数据
+      const timestamp = Date.now();
+      const response = await fetch(`/api/wall?sort=${sortBy}&limit=20&t=${timestamp}`);
       const data = await response.json();
 
       if (data.success) {

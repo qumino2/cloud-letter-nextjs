@@ -40,8 +40,8 @@ export async function GET(request: NextRequest) {
       hasMore: letters.length === limit
     }, {
       headers: {
-        // 缓存60秒
-        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30'
+        // 缓存10秒，保证较好的实时性
+        'Cache-Control': 'public, s-maxage=10, stale-while-revalidate=5'
       }
     });
 
