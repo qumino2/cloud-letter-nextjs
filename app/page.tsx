@@ -286,7 +286,7 @@ export default function Home() {
                 <p className="text-center">
                   在左侧输入您想说的话
                   <br />
-                  然后点击"生成家书"
+                  然后点击&ldquo;生成家书&rdquo;
                 </p>
               </div>
             ) : (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SharedLetter } from '@/types/letter';
 import WallCard from '../components/WallCard';
 import LetterModal from '../components/LetterModal';
@@ -31,11 +31,7 @@ export default function WallPage() {
   }, []);
 
   // 加载数据
-  useEffect(() => {
-    loadLetters();
-  }, [sortBy]);
-
-  const loadLetters = async () => {
+  const loadLetters = useCallback(async () => {
     setIsLoading(true);
     setError('');
 
@@ -54,7 +50,11 @@ export default function WallPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [sortBy]);
+
+  useEffect(() => {
+    loadLetters();
+  }, [loadLetters]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50">

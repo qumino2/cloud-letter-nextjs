@@ -105,7 +105,7 @@ export default function ShareToWall({ letter, onClose, onSuccess }: ShareToWallP
               <div>
                 <p className="text-sm font-medium text-gray-800">完全匿名</p>
                 <p className="text-xs text-gray-500">
-                  显示为"一位父母 → 宝贝"，保护您的隐私
+                  显示为&ldquo;一位父母 → 宝贝&rdquo;，保护您的隐私
                 </p>
               </div>
             </label>
