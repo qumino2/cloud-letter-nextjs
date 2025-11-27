@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateLetter } from '@/lib/volcano';
+import { generateLetterStream } from '@/lib/volcano';
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,18 +37,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 调用AI生成家书
-    const letter = await generateLetter(
+    // 调用AI生成家书（流式）
+    const stream = await generateLetterStream(
       parentInput.trim(),
       parentRole,
       childName.trim()
     );
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        letter: letter
-      }
+    // 返回流式响应
+    return new NextResponse(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
     });
   } catch (error: any) {
     console.error('生成家书错误:', error);

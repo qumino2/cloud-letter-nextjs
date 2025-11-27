@@ -9,10 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "axios": "^1.7.9",
+    "canvas-confetti": "^1.9.4",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.24",
+    "html2canvas": "^1.4.1",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "axios": "^1.7.9"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^22",
