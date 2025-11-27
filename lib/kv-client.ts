@@ -43,7 +43,7 @@ export async function shareLetterToWall(
       await mockKV.zadd(KEYS.POPULAR_LETTERS, { score: 0, member: id });
     } else {
       // 存储家书详情
-      await kv.hset(KEYS.LETTER(id), letter);
+      await kv.hset(KEYS.LETTER(id), letter as unknown as Record<string, unknown>);
 
       // 添加到最近列表（按时间戳排序）
       await kv.zadd(KEYS.RECENT_LETTERS, {
@@ -107,7 +107,7 @@ export async function getWallLetters(
       for (const id of ids) {
         const letter = await kv.hgetall(KEYS.LETTER(id));
         if (letter) {
-          letters.push(letter as SharedLetter);
+          letters.push(letter as unknown as SharedLetter);
         }
       }
 
@@ -126,10 +126,10 @@ export async function getLetter(id: string): Promise<SharedLetter | null> {
   try {
     if (mockKV.shouldUseMock()) {
       const letter = await mockKV.hgetall(KEYS.LETTER(id));
-      return letter as SharedLetter | null;
+      return letter as unknown as SharedLetter | null;
     } else {
       const letter = await kv.hgetall(KEYS.LETTER(id));
-      return letter as SharedLetter | null;
+      return letter as unknown as SharedLetter | null;
     }
   } catch (error) {
     console.error('获取家书详情失败:', error);
